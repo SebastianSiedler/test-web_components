@@ -1,0 +1,62 @@
+model Lagerplatz {
+    id          String  @id @default(cuid())
+    description String
+    Leihe       Leihe[]
+}
+
+model Category {
+    id       String     @id @default(cuid())
+    parent   Category?  @relation("ChildParent", fields: [parentId], references: [id])
+    children Category[] @relation("ChildParent")
+    parentId String?
+    item     Item[]
+}
+
+model Item {
+    id   String @id @default(cuid())
+    name String
+
+    category   Category  @relation(fields: [categoryId], references: [id])
+    categoryId String
+    Bestand    Bestand[]
+}
+
+model Bestand {
+    id String @id @default(cuid())
+
+    item   Item   @relation(fields: [itemId], references: [id])
+    itemId String
+
+    Leihe Leihe[]
+
+    buyDate   DateTime
+    buyPrice  Float
+    sellDate  DateTime?
+    sellPrice Float?
+}
+
+model Leihe {
+    id                  String    @id @default(cuid())
+    zustandAfter        String?
+    verleihdatum        DateTime
+    estimatedReturnDate DateTime
+    actualReturnDate    DateTime?
+
+    item Bestand @relation(fields: [bestandId], references: [id])
+
+    user   User   @relation(fields: [userId], references: [id])
+    userId String
+
+    location     Lagerplatz @relation(fields: [lagerplatzId], references: [id])
+    lagerplatzId String
+    bestandId    String
+}
+
+model User {
+    id        String  @id @default(cuid())
+    firstname String
+    lastname  String
+    email     String  @unique
+    matNr     String  @unique
+    leihe     Leihe[]
+}

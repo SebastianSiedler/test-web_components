@@ -1,0 +1,8 @@
+.theme--default .btn {
+  color: green;
+  background-color: red;
+}
+.theme--dark .btn {
+  color: green;
+  background-color: blue;
+}/*# sourceMappingURL=counter.css.map */

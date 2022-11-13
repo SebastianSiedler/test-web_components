@@ -1,4 +1,5 @@
 'use strict';
+import { applyTheme } from '../../lib/theme.js';
 import { defineComponent } from '../../lib/utils.js';
 
 defineComponent({
@@ -10,6 +11,14 @@ defineComponent({
         super();
         const shadowRoot = this.attachShadow({ mode: 'open' });
         shadowRoot.innerHTML = html;
+
+        shadowRoot.getElementById('usetheme').classList.add('theme--default');
+
+        window
+          .matchMedia('(prefers-color-scheme: dark)')
+          .addEventListener('change', (event) => {
+            applyTheme(event.matches, shadowRoot.getElementById('usetheme'));
+          });
 
         this._value = 0;
 

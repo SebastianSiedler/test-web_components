@@ -1,0 +1,10 @@
+.theme--default main {
+  background-color: white;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.theme--dark main {
+  background-color: black;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}/*# sourceMappingURL=app.css.map */

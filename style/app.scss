@@ -1,0 +1,9 @@
+@import '../style/theme.scss';
+
+main{
+  @include themed() {
+    background-color: t('bg');
+    color: t('text');
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
