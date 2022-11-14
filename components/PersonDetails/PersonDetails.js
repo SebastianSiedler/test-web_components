@@ -3,7 +3,7 @@ import { defineComponent } from '../../lib/utils.js';
 defineComponent({
   templatePath: '/components/PersonDetails/PersonDetails.html',
   htmlTag: 'person-details',
-  define: (html) => {
+  define: ({ html }) => {
     return class PersonDetails extends HTMLElement {
       constructor() {
         super();

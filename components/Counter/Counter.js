@@ -5,7 +5,7 @@ import { defineComponent } from '../../lib/utils.js';
 defineComponent({
   templatePath: '/components/Counter/Counter.html',
   htmlTag: 'my-counter',
-  define: (html) => {
+  define: ({ html }) => {
     return class Counter extends HTMLElement {
       constructor() {
         super();
