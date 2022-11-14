@@ -3,7 +3,7 @@ import { applyTheme } from '../../lib/theme.js';
 import { defineComponent } from '../../lib/utils.js';
 
 defineComponent({
-  templatePath: './components/Counter/Counter.html',
+  templatePath: '/components/Counter/Counter.html',
   htmlTag: 'my-counter',
   define: (html) => {
     return class Counter extends HTMLElement {

@@ -1,7 +1,7 @@
 import { defineComponent } from '../../lib/utils.js';
 
 defineComponent({
-  templatePath: './components/PersonDetails/PersonDetails.html',
+  templatePath: '/components/PersonDetails/PersonDetails.html',
   htmlTag: 'person-details',
   define: (html) => {
     return class PersonDetails extends HTMLElement {
