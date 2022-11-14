@@ -14,16 +14,20 @@ defineComponent({
       connectedCallback() {
         console.log('mounted');
 
+        if (this.shadowRoot === null) throw 'shadow root not found!';
+
         this.shadowRoot.innerHTML = html;
 
         this.shadowRoot
           .getElementById('usetheme')
-          .classList.add('theme--default');
+          ?.classList.add('theme--default');
+
+        const wrapper = this.shadowRoot.getElementById('usetheme');
 
         window
           .matchMedia('(prefers-color-scheme: dark)')
           .addEventListener('change', (event) => {
-            applyTheme(event.matches, shadowRoot.getElementById('usetheme'));
+            applyTheme(event.matches, wrapper);
           });
 
         this._value = 0;
