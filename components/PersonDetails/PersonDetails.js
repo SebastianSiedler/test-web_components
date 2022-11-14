@@ -7,8 +7,12 @@ defineComponent({
       constructor() {
         super();
 
-        const shadowRoot = this.attachShadow({ mode: 'open' });
-        shadowRoot.innerHTML = html;
+        this.attachShadow({ mode: 'open' });
+      }
+
+      connectedCallback() {
+        console.log('mounted "PersonDetails"');
+        this.shadowRoot.innerHTML = html;
 
         const style = document.createElement('style');
         style.textContent = `
@@ -18,7 +22,7 @@ defineComponent({
           p { margin: 10px 0; }
           `;
 
-        shadowRoot.appendChild(style);
+        this.shadowRoot.appendChild(style);
       }
     };
   },

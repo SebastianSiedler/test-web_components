@@ -8,10 +8,17 @@ defineComponent({
     return class MyCounter extends HTMLElement {
       constructor() {
         super();
-        const shadowRoot = this.attachShadow({ mode: 'open' });
-        shadowRoot.innerHTML = html;
+        this.attachShadow({ mode: 'open' });
+      }
 
-        shadowRoot.getElementById('usetheme').classList.add('theme--default');
+      connectedCallback() {
+        console.log('mounted');
+
+        this.shadowRoot.innerHTML = html;
+
+        this.shadowRoot
+          .getElementById('usetheme')
+          .classList.add('theme--default');
 
         window
           .matchMedia('(prefers-color-scheme: dark)')
@@ -21,9 +28,9 @@ defineComponent({
 
         this._value = 0;
 
-        this.valueElement = shadowRoot.querySelector('p');
-        var incrementButton = shadowRoot.querySelectorAll('button')[0];
-        var decrementButton = shadowRoot.querySelectorAll('button')[1];
+        this.valueElement = this.shadowRoot.querySelector('p');
+        var incrementButton = this.shadowRoot.querySelectorAll('button')[0];
+        var decrementButton = this.shadowRoot.querySelectorAll('button')[1];
 
         incrementButton.onclick = () => this.value++;
         decrementButton.onclick = () => this.value--;
