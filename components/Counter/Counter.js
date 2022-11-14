@@ -4,9 +4,8 @@ import { defineComponent } from '../../lib/utils.js';
 
 defineComponent({
   templatePath: '/components/Counter/Counter.html',
-  htmlTag: 'my-counter',
   define: ({ html }) => {
-    return class Counter extends HTMLElement {
+    return class MyCounter extends HTMLElement {
       constructor() {
         super();
         const shadowRoot = this.attachShadow({ mode: 'open' });
