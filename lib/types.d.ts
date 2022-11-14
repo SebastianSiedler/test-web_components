@@ -1,7 +1,9 @@
-declare type Define = (params: { html: string }) => CustomElementConstructor;
+type Define = (params: { html: string }) => CustomElementConstructor;
 
-declare type DefineComponentParams = {
+type DefineComponentArgs = {
   // path to the PATH.html file for the component
   templatePath: string;
   define: Define;
 };
+
+declare type DefineComponent = (args: DefineComponentArgs) => Promise<void>;
